@@ -26,6 +26,13 @@ const updateMarchingBands = () => {
     const distance = Math.max(180, window.innerWidth * 0.72);
     band.style.setProperty('--march-x', `${(progress * 2 - 1) * distance * direction}px`);
     band.style.setProperty('--march-y', `${Math.sin(progress * Math.PI) * -8}px`);
+    const points = Array.from({ length: 9 }, (_, index) => {
+      const x = index * 12.5;
+      const wave = Math.sin((index * 1.35) + progress * Math.PI * 2) * 5;
+      const base = band.classList.contains('marching-band-bottom') ? 10 : 12;
+      return `${x}% ${Math.max(1, base + wave)}%`;
+    });
+    band.style.clipPath = `polygon(${points.join(',')},100% 100%,0 100%)`;
   });
 };
 const requestMarchingUpdate = () => {

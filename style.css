@@ -34,3 +34,9 @@ main{overflow:visible}
 .marching-band-bottom .marching-band-track{--march-angle:6deg}
 .marching-band-top .marching-band-track img{transform:scaleX(-1)}
 .marching-band img{animation:none}
+
+/* Unified backgrounds and scroll-driven wavy edges. */
+.marching-band{background:#211006;clip-path:polygon(0 14%,12.5% 8%,25% 16%,37.5% 6%,50% 14%,62.5% 5%,75% 13%,87.5% 7%,100% 12%,100% 100%,0 100%)}
+.marching-band::before,.marching-band::after{display:none}
+.marching-band-bottom{background:#fff4d6;clip-path:polygon(0 10%,12.5% 5%,25% 13%,37.5% 4%,50% 11%,62.5% 3%,75% 12%,87.5% 5%,100% 10%,100% 100%,0 100%)}
+.marching-band-track{z-index:1}
