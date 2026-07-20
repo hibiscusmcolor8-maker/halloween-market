@@ -40,3 +40,4 @@ main{overflow:visible}
 .marching-band::before,.marching-band::after{display:none}
 .marching-band-bottom{background:#fff4d6;clip-path:polygon(0 10%,12.5% 5%,25% 13%,37.5% 4%,50% 11%,62.5% 3%,75% 12%,87.5% 5%,100% 10%,100% 100%,0 100%)}
 .marching-band-track{z-index:1}
+.marching-band-bottom .marching-band-track img{transform:scaleX(-1)}
