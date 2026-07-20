@@ -24,3 +24,13 @@ main{overflow:visible}
 @keyframes tiny-steps{from{margin-top:-3px}to{margin-top:3px}}
 @media (prefers-reduced-motion:reduce){.marching-band-track{animation:none}}
 @media (max-width:560px){.marching-band{height:116px}.marching-band img{width:clamp(230px,50vw,300px)}.marching-band.is-visible .marching-band-track{animation-duration:10s}}
+
+/* Scroll-linked marching bands: the background is diagonal, the animals stay intact. */
+.marching-band{opacity:1;transform:none;transition:none}
+.marching-band::before{inset:0;background:#211006;clip-path:polygon(0 18%,100% 0,100% 82%,0 100%)}
+.marching-band-bottom::before{background:linear-gradient(135deg,#fff4d6 0 48%,#ffe7cd 48% 100%)}
+.marching-band::after{display:none}
+.marching-band-track,.marching-band-bottom .marching-band-track{animation:none!important;transform:translate3d(var(--march-x,0px),calc(-50% + var(--march-y,0px)),0) rotate(var(--march-angle,-6deg));transition:none;will-change:transform}
+.marching-band-bottom .marching-band-track{--march-angle:6deg}
+.marching-band-top .marching-band-track img{transform:scaleX(-1)}
+.marching-band img{animation:none}
