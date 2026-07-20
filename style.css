@@ -10,12 +10,17 @@ main{overflow:visible}
 .is-android .site-hero{height:100svh;min-height:560px;max-height:860px}
 .is-android .hero-picture img{object-position:center top}
 @media (max-width:900px){.site-hero{min-height:0;height:100svh;max-height:860px}.hero-content{padding:48px 18px 36px}.hero-content h1{font-size:clamp(38px,10vw,72px)}.hero-tag{font-size:clamp(15px,4vw,20px)}.hero-badges{margin-top:16px}.hero-actions{margin-top:18px}}
-.marching-band{position:relative;height:clamp(150px,18vw,260px);overflow:hidden;isolation:isolate;background:linear-gradient(135deg,#f47a20 0 48%,#4b235f 48% 100%);clip-path:polygon(0 18%,100% 0,100% 82%,0 100%);z-index:2}
-.marching-band::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,209,102,.22) 0 22px,transparent 22px 54px);z-index:-1}
-.marching-band-track{position:absolute;left:0;top:50%;display:flex;width:max-content;transform:translateY(-50%);animation:march-right 28s linear infinite;will-change:transform}
-.marching-band-bottom .marching-band-track{animation-name:march-left;animation-duration:30s}
-.marching-band img{display:block;width:clamp(520px,72vw,1120px);height:auto;mix-blend-mode:multiply;filter:saturate(1.08) drop-shadow(0 10px 8px rgba(35,17,5,.18))}
-@keyframes march-right{from{transform:translate(-50%, -50%)}to{transform:translate(0, -50%)}}
-@keyframes march-left{from{transform:translate(-50%, -50%)}to{transform:translate(0, -50%)}}
+.marching-band{position:relative;height:clamp(150px,18vw,260px);overflow:hidden;isolation:isolate;background:transparent;z-index:2;opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.marching-band::before{content:"";position:absolute;inset:8% -4%;background:linear-gradient(135deg,#f47a20 0 48%,#4b235f 48% 100%);clip-path:polygon(0 18%,100% 0,100% 82%,0 100%);z-index:-1}
+.marching-band::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(135deg,rgba(255,209,102,.22) 0 22px,transparent 22px 54px);pointer-events:none}
+.marching-band.is-visible{opacity:1;transform:translateY(0)}
+.marching-band-track{position:absolute;left:0;top:50%;display:flex;width:max-content;transform:translate(-50%,-50%) rotate(-6deg);will-change:transform}
+.marching-band-bottom .marching-band-track{transform:translate(-50%,-50%) rotate(6deg)}
+.marching-band.is-visible .marching-band-track{animation:march-right 14s linear infinite}
+.marching-band-bottom.is-visible .marching-band-track{animation-name:march-left}
+.marching-band img{display:block;width:clamp(260px,36vw,560px);height:auto;filter:saturate(1.08) drop-shadow(0 10px 8px rgba(35,17,5,.18));animation:tiny-steps .6s ease-in-out infinite alternate}
+@keyframes march-right{from{transform:translate(-50%,-50%) rotate(-6deg)}to{transform:translate(0,-50%) rotate(-6deg)}}
+@keyframes march-left{from{transform:translate(-50%,-50%) rotate(6deg)}to{transform:translate(0,-50%) rotate(6deg)}}
+@keyframes tiny-steps{from{margin-top:-3px}to{margin-top:3px}}
 @media (prefers-reduced-motion:reduce){.marching-band-track{animation:none}}
-@media (max-width:560px){.marching-band{height:116px;clip-path:polygon(0 22%,100% 0,100% 78%,0 100%)}.marching-band img{width:480px}.marching-band-track{animation-duration:20s}.marching-band-bottom .marching-band-track{animation-duration:22s}}
+@media (max-width:560px){.marching-band{height:116px}.marching-band img{width:clamp(230px,50vw,300px)}.marching-band.is-visible .marching-band-track{animation-duration:10s}}

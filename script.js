@@ -13,3 +13,15 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
+
+const marchingBands = document.querySelectorAll('.marching-band');
+if ('IntersectionObserver' in window) {
+  const marchingObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    });
+  }, { threshold: 0.15 });
+  marchingBands.forEach((band) => marchingObserver.observe(band));
+} else {
+  marchingBands.forEach((band) => band.classList.add('is-visible'));
+}
