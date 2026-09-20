@@ -23,3 +23,7 @@
   .hero-place{font-size:12px;line-height:1.5}
   .hero-actions{margin-top:18px}
 }
+
+.benefit-block{padding-bottom:4px}
+.benefit-block h4{margin:0 0 10px;color:var(--purple);font-size:16px;font-weight:900}
+.campaign span{letter-spacing:.02em}
